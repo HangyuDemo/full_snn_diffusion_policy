@@ -106,15 +106,6 @@ class DiffusionUnetSpikingResnetHybridImagePolicy(BaseImagePolicy):
         # decide to use cnn or snn to encode images
         obs_encoder = policy.nets['policy'].nets['encoder'].nets['obs']
 
-        # 🔍 先查看 obs_nets 的结构
-        print("======= obs_nets structure =======")
-        print("Keys:", list(obs_encoder.obs_nets.keys()))
-        for k, v in obs_encoder.obs_nets.items():
-            print(f"{k}: {v.__class__.__name__}")
-            if hasattr(v, 'backbone'):
-                print(f"   backbone: {v.backbone.__class__.__name__}")
-        print("=================================")
-
         if obs_encoder_type == 'cnn':
             pass
         elif obs_encoder_type == 'snn':
@@ -132,15 +123,7 @@ class DiffusionUnetSpikingResnetHybridImagePolicy(BaseImagePolicy):
             else:
                 print(obs_encoder.obs_nets.keys())
                 raise Exception("Unsupported obs encoder type")
-            
-        print("after ")
-        print("Keys:", list(obs_encoder.obs_nets.keys()))
-        for k, v in obs_encoder.obs_nets.items():
-            print(f"{k}: {v.__class__.__name__}")
-            if hasattr(v, 'backbone'):
-                print(f"   backbone: {v.backbone.__class__.__name__}")
-        print("=================================")
-
+          
         if obs_encoder_group_norm:
             # replace batch norm with group norm
             replace_submodules(

@@ -48,6 +48,7 @@ dependencies:
   # trick to force reinstall imagecodecs via pip
   # - imagecodecs==2022.8.8
   - pip:
+    - huggingface_hub==0.13.3
     - spikingjelly
     - av==10.0.0
     - imageio-ffmpeg==0.4.7
