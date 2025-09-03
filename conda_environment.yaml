@@ -1,4 +1,4 @@
-name: robodiff
+name: sdp
 channels:
   - pytorch
   - pytorch3d
@@ -14,7 +14,6 @@ dependencies:
   - numpy=1.23.3
   - numba==0.56.4
   - scipy==1.9.1
-  - py-opencv=4.6.0
   - cffi=1.15.1
   - ipykernel=6.16
   - matplotlib=3.6.1
@@ -34,7 +33,6 @@ dependencies:
   - shapely=1.8.4
   - cython=0.29.32
   - imageio=2.22.0
-  - imageio-ffmpeg=0.4.7
   - termcolor=2.0.1
   - tensorboard=2.10.1
   - tensorboardx=2.5.1
@@ -44,14 +42,17 @@ dependencies:
   - accelerate=0.13.2
   - datasets=2.6.1
   - diffusers=0.11.1
-  - av=10.0.0
   - cmake=3.24.3
   # trick to avoid cpu affinity issue described in https://github.com/pytorch/pytorch/issues/99625
   - llvm-openmp=14
   # trick to force reinstall imagecodecs via pip
-  - imagecodecs==2022.8.8
+  # - imagecodecs==2022.8.8
   - pip:
+    - spikingjelly
+    - av==10.0.0
+    - imageio-ffmpeg==0.4.7
     - ray[default,tune]==2.2.0
+    - opencv-python==4.6.0.66
     # requires mujoco py dependencies libosmesa6-dev libgl1-mesa-glx libglfw3 patchelf
     - free-mujoco-py==2.1.6
     - pygame==2.1.2
